@@ -81,4 +81,4 @@ php artisan test
 ```
 
 ## Postman Collection
-Tersedia di file `postman_collection.json` di root repository.
+Tersedia di file `postman-collection/postman_collection.json` di root repository.
