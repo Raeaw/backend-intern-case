@@ -10,45 +10,45 @@ E-commerce REST API sederhana menggunakan Laravel 12 + Sanctum.
 ## Instalasi
 
 1. Clone repository
-   \`\`\`bash
-   git clone <repo-url>
+   ```bash
+   git clone https://github.com/Raeaw/backend-intern-case.git
    cd backend-intern-case
-   \`\`\`
+   ```
 
 2. Install dependencies
-   \`\`\`bash
+   ```bash
    composer install
-   \`\`\`
+   ```
 
 3. Copy environment file
-   \`\`\`bash
+   ```bash
    cp .env.example .env
-   \`\`\`
+   ```
 
 4. Generate app key
-   \`\`\`bash
+   ```bash
    php artisan key:generate
-   \`\`\`
+   ```
 
 5. Buat database `backend_intern_case` di phpMyAdmin, sesuaikan `.env`:
-   \`\`\`
+   ```
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
    DB_DATABASE=backend_intern_case
    DB_USERNAME=root
    DB_PASSWORD=
-   \`\`\`
+   ```
 
 6. Migrate & seed database
-   \`\`\`bash
+   ```bash
    php artisan migrate:fresh --seed
-   \`\`\`
+   ```
 
 7. Jalankan server
-   \`\`\`bash
+   ```bash
    php artisan serve
-   \`\`\`
+   ```
 
 ## Akun default (dari seeder)
 | Role  | Email             | Password |
@@ -76,9 +76,9 @@ E-commerce REST API sederhana menggunakan Laravel 12 + Sanctum.
 
 ## Testing
 
-\`\`\`bash
+```bash
 php artisan test
-\`\`\`
+```
 
 ## Postman Collection
 Tersedia di file `postman_collection.json` di root repository.
