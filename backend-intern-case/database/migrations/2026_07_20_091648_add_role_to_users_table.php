@@ -9,7 +9,6 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    // database/migrations/xxxx_add_role_to_users_table.php
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
