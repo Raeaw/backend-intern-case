@@ -43,4 +43,25 @@ class AuthTest extends TestCase
 
         $response->assertStatus(422);
     }
+
+    public function test_authenticated_user_can_logout(): void
+    {
+        $user = User::factory()->create();
+        $token = $user->createToken('test')->plainTextToken;
+
+        $response = $this->withHeader('Authorization', "Bearer {$token}")
+            ->postJson('/api/logout');
+
+        $response->assertStatus(200)
+            ->assertJsonPath('data.message', 'Logout berhasil.');
+
+        $this->assertDatabaseCount('personal_access_tokens', 0);
+    }
+
+    public function test_logout_fails_without_token(): void
+    {
+        $response = $this->postJson('/api/logout');
+
+        $response->assertStatus(401);
+    }
 }
