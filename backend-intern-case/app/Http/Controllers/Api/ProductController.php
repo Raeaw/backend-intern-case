@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Database\QueryException;
 
 class ProductController extends Controller
 {
@@ -40,7 +41,17 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        $product->delete();
+        try {
+            $product->delete();
+        } catch (QueryException $e) {
+            if ($e->getCode() === '23000') {
+                return response()->json([
+                    'message' => 'Produk tidak dapat dihapus karena sudah memiliki riwayat order.',
+                ], 409);
+            }
+
+            throw $e;
+        }
 
         return response()->json([
             'data' => [

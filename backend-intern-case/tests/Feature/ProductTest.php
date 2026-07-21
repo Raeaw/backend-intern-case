@@ -242,7 +242,8 @@ class ProductTest extends TestCase
         $response = $this->withHeader('Authorization', "Bearer {$token}")
             ->deleteJson("/api/products/{$product->id}");
 
-        $response->assertStatus(500);
+        $response->assertStatus(409)
+            ->assertJsonPath('message', 'Produk tidak dapat dihapus karena sudah memiliki riwayat order.');
 
         $this->assertDatabaseHas('products', ['id' => $product->id]);
     }
